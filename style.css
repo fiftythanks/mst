@@ -90,7 +90,7 @@ body {
   overflow-x: hidden;
 }
 
-button:hover {
+button {
   cursor: pointer;
 }
 
@@ -232,8 +232,11 @@ main {
   height: 100%;
 }
 
+.houses {
+  display: none;
+}
+
 .feature-wrapper {
-  width: var(--features-width);
   margin-right: auto;
   align-self: center;
   display: flex;
@@ -404,6 +407,68 @@ footer > nav {
 
 /* Tablets (landscape), small laptops (under 1280px) */
 @media (max-width: 1279px) {
+  .hero-wrapper {
+    height: 350px;
+    position: relative;
+  }
+  .hero {
+    align-items: center;
+    padding: 0 var(--padding-sides);
+    gap: 2rem;
+    & h2 {
+      text-wrap: auto;
+      text-align: center;
+      padding: 0 var(--padding-sides);
+    }
+    & ul {
+      flex-direction: row;
+      & li {
+        justify-content: center;
+        width: 17rem;
+      }
+    }
+    & a {
+      align-self: center;
+    }
+  }
+  .hero-image {
+    display: none;
+  }
+  .features-section {
+    padding: 0 calc(2 * var(--padding-sides));
+    gap: calc(var(--padding-sides));
+    align-items: center;
+  }
+  .feature-wrapper {
+    gap: 1rem;
+  }
+  .image-left {
+    display: none;
+  }
+  .houses {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex-shrink: 0;
+    & img {
+      width: 300px;
+      flex-shrink: 0;
+    }
+  }
+  .consultation {
+    height: auto;
+    padding: var(--padding-sides);
+    & form {
+      gap: 0.7rem;
+      & button {
+        margin-top: 1rem;
+      }
+    }
+    & h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  }
 }
 
 @media (max-width: 1320px) {
