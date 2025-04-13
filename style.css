@@ -237,6 +237,10 @@ main {
   display: none;
 }
 
+.why-choose {
+  display: none;
+}
+
 .feature-wrapper {
   margin-right: auto;
   align-self: center;
@@ -500,28 +504,113 @@ footer > nav {
 
 /* Tablets (portrait; under 1024px) */
 @media (max-width: 1023px) {
+  nav ul {
+    gap: 0;
+  }
+  nav li {
+    padding: 1rem;
+  }
   header {
     height: auto;
     flex-direction: column;
     align-items: center;
-    padding: 0.5rem 1rem;
-    gap: 0.5rem;
+    padding: 0.5rem 1rem 0;
     & nav {
       margin-left: 0;
     }
   }
   .hero-wrapper {
-    height: auto;
+    height: 80vw;
+    background-color: rgb(34 34 34 / 0.65);
   }
   .hero {
-    padding: 5rem var(--padding-sides);
-    align-items: flex-start;
+    padding: 5rem calc(0.5 * var(--padding-sides));
+    width: 100vw;
+    align-items: stretch;
     & > h1 {
-      text-align: left;
+      text-align: center;
+    }
+    & > h2 {
+      text-align: center;
+      text-wrap: balance;
+      padding: 0;
     }
     & > ul {
       flex-direction: column;
+      margin: 0;
+      align-items: center;
+      & li {
+        background: none;
+        justify-content: flex-start;
+        width: 15rem;
+        padding: 0;
+      }
     }
+    & li::before {
+      scale: 0.75;
+    }
+    & b {
+      font-size: 1.2rem;
+    }
+    .explore {
+      padding: 0.75rem 1.5rem;
+      width: 15rem;
+    }
+  }
+  .hero-image {
+    display: block;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 80vw;
+  }
+  .features-section {
+    flex-direction: column;
+    gap: 2rem;
+    flex-grow: 1;
+    height: auto;
+    padding: 0 var(--padding-sides);
+    & .explore {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      width: 15rem;
+    }
+  }
+  .houses {
+    display: none;
+  }
+  .why-choose {
+    display: block;
+  }
+  .consultation {
+    position: relative;
+    height: auto;
+    & form {
+      border-top-right-radius: var(--form-border-radius);
+      border-bottom-right-radius: var(--form-border-radius);
+      height: auto;
+      padding: calc(0.5 * var(--padding-sides)) var(--padding-sides);
+    }
+    & input[type='checkbox'] {
+      width: 1.3rem;
+      height: 1.3rem;
+    }
+  }
+  .agent {
+    width: 0;
+    height: 0;
+  }
+  .agent > img {
+    position: absolute;
+    display: none;
+  }
+  .media {
+    gap: 1rem;
+  }
+  /* Hides the word explore from the bottom "EXPLORE PROPERTIES" button */
+  .explore-word {
+    display: none;
   }
 }
 
