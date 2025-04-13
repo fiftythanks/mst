@@ -75,7 +75,8 @@ h6 {
   --padding-sides: 5rem;
   --max-height-hero: 670px;
   --form-border-radius: 15px;
-  --consult-height: 70vh;
+  --consult-height-max: 70vh;
+  --consult-height-min: 420px;
   --border-radius: 3px;
 }
 
@@ -241,6 +242,7 @@ main {
   align-self: center;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
   & a {
     align-self: center;
     flex-grow: 0;
@@ -272,14 +274,26 @@ main {
 
 .consultation {
   margin-bottom: var(--header-height);
-  padding: 0 var(--padding-sides);
+  padding: 0 calc(1.5 * var(--padding-sides));
   color: #38535d;
   display: flex;
   width: 100vw;
-  height: var(--consult-height);
+  max-height: var(--consult-height-max);
+}
+
+.agent {
+  max-height: var(--consult-height-max);
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  & img {
+    height: 100%;
+    border-top-right-radius: var(--form-border-radius);
+    border-bottom-right-radius: var(--form-border-radius);
+  }
 }
 
 form {
+  flex-grow: 1;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -287,12 +301,11 @@ form {
   justify-content: center;
   border-top-left-radius: var(--form-border-radius);
   border-bottom-left-radius: var(--form-border-radius);
-  flex-grow: 1;
   padding: calc(var(--padding-sides) / 2) var(--padding-sides)
     calc(var(--padding-sides) / 2) calc(var(--padding-sides) * 1.3);
   & h2 {
     font-family: Prata;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 400;
     line-height: 1.15;
     align-self: flex-start;
@@ -335,12 +348,6 @@ form {
     flex-shrink: 0;
     font-size: 1.1rem;
   }
-}
-
-.agent {
-  height: var(--consult-height);
-  border-top-right-radius: var(--form-border-radius);
-  border-bottom-right-radius: var(--form-border-radius);
 }
 
 footer {
@@ -393,28 +400,43 @@ footer > nav {
   justify-self: end;
 }
 
-/* Mobile (portrait; under 640px) */
-@media (max-width: 639px) {
+/* Laptops, desktops (under 1536px) */
+@media (max-width: 1535px) {
+  .hero-wrapper {
+    height: 500px;
+  }
+  .features-section {
+    height: 500px;
+  }
+  .feature-wrapper {
+    gap: 1rem;
+  }
+  .feature-list > li {
+    padding: 1rem 0;
+  }
 }
 
-/* Mobile (landscape; under 768) */
-@media (max-width: 767px) {
-}
-
-/* Tablets (portrait; under 1024px) */
-@media (max-width: 1023px) {
+@media (max-width: 1320px) {
+  .hero-wrapper {
+    gap: var(--padding-sides);
+  }
 }
 
 /* Tablets (landscape), small laptops (under 1280px) */
 @media (max-width: 1279px) {
+  header {
+    padding-left: calc(0.5 * var(--padding-sides));
+    padding-right: calc(0.5 * var(--padding-sides));
+  }
   .hero-wrapper {
-    height: 350px;
+    height: calc(100vh - var(--header-height));
     position: relative;
   }
   .hero {
     align-items: center;
     padding: 0 var(--padding-sides);
     gap: 2rem;
+    justify-content: center;
     & h2 {
       text-wrap: auto;
       text-align: center;
@@ -422,6 +444,7 @@ footer > nav {
     }
     & ul {
       flex-direction: row;
+      margin-bottom: 2rem;
       & li {
         justify-content: center;
         width: 17rem;
@@ -435,8 +458,8 @@ footer > nav {
     display: none;
   }
   .features-section {
-    padding: 0 calc(2 * var(--padding-sides));
-    gap: calc(var(--padding-sides));
+    padding: 0 calc(0.5 * var(--padding-sides));
+    gap: var(--padding-sides);
     align-items: center;
   }
   .feature-wrapper {
@@ -456,36 +479,56 @@ footer > nav {
     }
   }
   .consultation {
-    height: auto;
-    padding: var(--padding-sides);
-    & form {
-      gap: 0.7rem;
-      & button {
-        margin-top: 1rem;
-      }
-    }
+    padding-left: calc(0.5 * var(--padding-sides));
+    padding-right: calc(0.5 * var(--padding-sides));
     & h2 {
       font-size: 1.5rem;
-      font-weight: 700;
+    }
+    & form {
+      padding: 0 calc(0.5 * var(--padding-sides)) 0 var(--padding-sides);
+    }
+  }
+  .footer-main {
+    padding-left: calc(0.5 * var(--padding-sides));
+    padding-right: calc(0.5 * var(--padding-sides));
+  }
+  .footer-right .explore {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Tablets (portrait; under 1024px) */
+@media (max-width: 1023px) {
+  header {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+    & nav {
+      margin-left: 0;
+    }
+  }
+  .hero-wrapper {
+    height: auto;
+  }
+  .hero {
+    padding: 5rem var(--padding-sides);
+    align-items: flex-start;
+    & > h1 {
+      text-align: left;
+    }
+    & > ul {
+      flex-direction: column;
     }
   }
 }
 
-@media (max-width: 1320px) {
-  .hero-wrapper {
-    gap: var(--padding-sides);
-  }
+/* Mobile (landscape; under 768) */
+@media (max-width: 767px) {
 }
 
-/* Laptops, desktops (under 1536px) */
-@media (max-width: 1535px) {
-  .hero-wrapper {
-    height: 500px;
-  }
-  .features-section {
-    height: 500px;
-  }
-  .feature-list > li {
-    padding: 1rem 0;
-  }
+/* Mobile (portrait; under 640px) */
+@media (max-width: 639px) {
 }
