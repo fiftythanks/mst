@@ -109,6 +109,11 @@ header {
   }
 }
 
+#mobile-menu-wrapper,
+.mobile-menu-btn {
+  display: none;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -502,8 +507,8 @@ footer > nav {
   }
 }
 
-/* Tablets (portrait; under 1024px) */
-@media (max-width: 1023px) {
+/* Tablets (portrait; under 1025px; 12.9-inch iPad Pro is 1024px) */
+@media (max-width: 1025px) and (min-height: 768px) {
   nav ul {
     gap: 0;
   }
@@ -539,6 +544,7 @@ footer > nav {
       flex-direction: column;
       margin: 0;
       align-items: center;
+      gap: 0.3rem;
       & li {
         background: none;
         justify-content: flex-start;
@@ -614,8 +620,107 @@ footer > nav {
   }
 }
 
-/* Mobile (landscape; under 768) */
-@media (max-width: 767px) {
+/* Mobile (landscape) */
+@media (max-width: 1025px) and (max-height: 768px) {
+  :root {
+    --header-height: 3rem;
+  }
+  header {
+    justify-content: center;
+    align-items: center;
+  }
+  .logo {
+    font-size: 2rem;
+  }
+  header nav {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .hero {
+    padding: 0 0.5rem;
+    width: 100%;
+    & h1 {
+      font-size: 1.5rem;
+    }
+    & h2 {
+      padding: 0;
+      font-size: 1.1rem;
+    }
+    & ul {
+      margin-bottom: 0;
+      & li {
+        padding: 0;
+        background: none;
+        width: auto;
+        &::before {
+          scale: 0.75;
+        }
+      }
+    }
+    & b {
+      font-size: 1rem;
+    }
+    & .explore {
+      margin-top: 0.5rem;
+    }
+    gap: 1rem;
+  }
+  .explore {
+    padding: 0.5rem 1rem;
+  }
+  .explore-word {
+    display: none;
+  }
+  .houses {
+    display: none;
+  }
+  .why-choose {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .features-section {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem 2rem;
+    flex-grow: 1;
+    height: auto;
+  }
+  .feature-wrapper {
+    flex-grow: 1;
+  }
+  .consultation {
+    padding: 0 2rem;
+    max-height: fit-content;
+    height: auto;
+    flex-grow: 1;
+    & form {
+      padding: 2rem;
+      border-top-right-radius: var(--form-border-radius);
+      border-bottom-right-radius: var(--form-border-radius);
+    }
+  }
+  .agent {
+    display: none;
+  }
+  .media {
+    gap: 0.5rem;
+  }
+  .footer-main {
+    padding: 1rem 2rem;
+  }
+  .footer-left,
+  .footer-right {
+    width: 9rem;
+  }
 }
 
 /* Mobile (portrait; under 640px) */
