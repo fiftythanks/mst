@@ -238,10 +238,9 @@ main {
   height: 100%;
 }
 
-.houses {
-  display: none;
-}
-
+/* Will be visible for smaller screen sizes */
+.houses,
+.properties,
 .why-choose {
   display: none;
 }
@@ -507,8 +506,115 @@ footer > nav {
   }
 }
 
-/* Tablets (portrait; under 1025px; 12.9-inch iPad Pro is 1024px) */
-@media (max-width: 1025px) and (min-height: 768px) {
+/* Mobile (landscape) */
+@media (max-width: 1024px) {
+  :root {
+    --header-height: 3rem;
+  }
+  header {
+    justify-content: center;
+    align-items: center;
+  }
+  .logo {
+    font-size: 2rem;
+  }
+  header nav {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .hero-wrapper {
+    height: auto;
+  }
+  .hero {
+    padding: 2rem 0.5rem;
+    width: 100%;
+    height: auto;
+    & h1 {
+      font-size: 1.75rem;
+    }
+    & h2 {
+      padding: 0;
+      font-size: 1.25rem;
+    }
+    & ul {
+      margin-bottom: 0;
+      & li {
+        padding: 0;
+        background: none;
+        width: auto;
+        &::before {
+          scale: 0.75;
+        }
+      }
+    }
+    & b {
+      font-size: 1rem;
+    }
+    & .explore {
+      margin-top: 0.5rem;
+    }
+    gap: 1rem;
+  }
+  .explore {
+    padding: 0.5rem 1rem;
+  }
+  .explore-word {
+    display: none;
+  }
+  .houses {
+    display: none;
+  }
+  .why-choose {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .features-section {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem 2rem;
+    flex-grow: 1;
+    height: auto;
+  }
+  .feature-wrapper {
+    flex-grow: 1;
+  }
+  .consultation {
+    padding: 0 2rem;
+    max-height: fit-content;
+    height: auto;
+    flex-grow: 1;
+    & form {
+      padding: 2rem;
+      border-top-right-radius: var(--form-border-radius);
+      border-bottom-right-radius: var(--form-border-radius);
+    }
+  }
+  .agent {
+    display: none;
+  }
+  .media {
+    gap: 0.5rem;
+  }
+  .footer-main {
+    padding: 1rem 2rem;
+  }
+  .footer-left,
+  .footer-right {
+    width: 9rem;
+  }
+}
+
+/* Tablets (portrait; under 1025px; 12.9-inch iPad Pro is 1024px). */
+@media (max-width: 1024px) and (min-height: 550px) {
   nav ul {
     gap: 0;
   }
@@ -620,113 +726,79 @@ footer > nav {
   }
 }
 
-/* Mobile (landscape) */
-@media (max-width: 1025px) and (max-height: 768px) {
-  :root {
-    --header-height: 3rem;
-  }
-  header {
-    justify-content: center;
-    align-items: center;
-  }
-  .logo {
-    font-size: 2rem;
-  }
-  header nav {
-    display: none;
-  }
+/* Mobile (portrait; under 640px) */
+@media (max-width: 639px) {
   .mobile-menu-btn {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0.5rem;
-    background: none;
-    border: none;
-    width: 2.5rem;
-    height: 2.5rem;
+    top: 0.5rem;
+  }
+  main {
+    gap: 2.5rem;
   }
   .hero-wrapper {
     height: auto;
+    margin-bottom: -2.5rem;
   }
   .hero {
-    padding: 2rem 0.5rem;
-    width: 100%;
-    height: auto;
-    & h1 {
-      font-size: 1.75rem;
+    padding: 1.5rem 1rem 2.5rem;
+    align-items: center;
+    & > h1 {
+      font-size: 1.2rem;
     }
-    & h2 {
-      padding: 0;
-      font-size: 1.25rem;
-    }
-    & ul {
-      margin-bottom: 0;
-      & li {
-        padding: 0;
-        background: none;
-        width: auto;
-        &::before {
-          scale: 0.75;
-        }
-      }
-    }
-    & b {
+    & h2,
+    b {
       font-size: 1rem;
     }
-    & .explore {
-      margin-top: 0.5rem;
+    & ul {
+      align-items: center;
     }
-    gap: 1rem;
   }
-  .explore {
-    padding: 0.5rem 1rem;
-  }
-  .explore-word {
+  .hero-image {
     display: none;
-  }
-  .houses {
-    display: none;
-  }
-  .why-choose {
-    display: block;
-    margin-bottom: 0.5rem;
   }
   .features-section {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 0.5rem 2rem;
-    flex-grow: 1;
-    height: auto;
+    padding: 0;
+    gap: 1.5rem;
   }
-  .feature-wrapper {
-    flex-grow: 1;
-  }
-  .consultation {
-    padding: 0 2rem;
-    max-height: fit-content;
-    height: auto;
-    flex-grow: 1;
-    & form {
-      padding: 2rem;
-      border-top-right-radius: var(--form-border-radius);
-      border-bottom-right-radius: var(--form-border-radius);
+  .houses {
+    display: block;
+    & img {
+      width: 100%;
     }
   }
-  .agent {
-    display: none;
+  .feature-list {
+    padding: 0 1rem;
   }
-  .media {
-    gap: 0.5rem;
+  .consultation {
+    padding: 1rem;
+    & form {
+      width: 100%;
+      padding: 2rem;
+    }
+  }
+  footer nav {
+    height: auto;
+    & > ul {
+      flex-direction: column;
+      height: auto;
+    }
+    & li {
+      padding: 0;
+      line-height: 2.5;
+    }
   }
   .footer-main {
-    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+    text-align: center;
+    & > * {
+      align-items: center;
+      gap: 1rem;
+    }
   }
-  .footer-left,
-  .footer-right {
-    width: 9rem;
+  .footer-center {
+    gap: 1rem;
   }
-}
-
-/* Mobile (portrait; under 640px) */
-@media (max-width: 639px) {
 }
